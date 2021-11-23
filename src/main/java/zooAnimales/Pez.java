@@ -1,14 +1,15 @@
 package zooAnimales;
 import gestion.Zona;
+import java.util.ArrayList;
 
 public class Pez extends Animal {
-	private int totalAnimales=0;
+	private int totalAnimales;
 	private String nombre;
 	private int edad;
 	private String habitat;
 	private String genero;
 	private Zona zona;
-	private Pez[] listado;
+	private ArrayList<Pez> listado;
 	public int salmones=0;
 	public int bacalaos=0;
 	private String colorEscamas;
@@ -16,28 +17,36 @@ public class Pez extends Animal {
 
 	public Pez() {
 	}
-	public Pez(String nombre, int edad, String habitat, Zona zona, String genero, String colorEscamas, int cantidadAletas){
+	
+	public Pez(String nombre, int edad, String habitat, String genero, Zona zona, String colorEscamas, int cantidadAletas){
 		this.nombre = nombre;
 		this.edad = edad;
 		this.habitat = habitat;
-		this.zona = zona;
 		this.genero = genero;
+		this.zona = zona;
 		this.colorEscamas = colorEscamas;
 		this.cantidadAletas = cantidadAletas;
+		totalAnimales++;
 	}
 	public int cantidadPeces() {
+		return listado.size();
 		
 	}
 	@Override
 	public String movimiento() {
+		return "nadar";
 		
 	}
 	public void crearSalmon() {
 		//rojo, 6, oceano
+		salmones++;
+		Pez pez = new Pez(nombre, edad, "oceano", genero, zona, "rojo", 6);
 		
 	}
 	public void crearBacalao() {
 		//gris, 6, oceano
+		bacalaos++;
+		Pez pez = new Pez(nombre, edad, "oceano", genero, zona, "gris", 6);
 		
 	}
 	public String getNombre() {
@@ -80,11 +89,11 @@ public class Pez extends Animal {
 		this.zona=zona;
 		
 	}
-	public Pez[] getPez() {
+	public ArrayList<Pez> getPez() {
 		return listado;
 		
 	}
-	public void setPez(Pez[] listado) {
+	public void setPez(ArrayList<Pez> listado) {
 		this.listado=listado;
 		
 	}

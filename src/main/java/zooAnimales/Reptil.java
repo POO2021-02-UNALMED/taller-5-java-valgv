@@ -1,14 +1,15 @@
 package zooAnimales;
 import gestion.Zona;
+import java.util.ArrayList;
 
 public class Reptil extends Animal {
-	private int totalAnimales=0;
+	private int totalAnimales;
 	private String nombre;
 	private int edad;
 	private String habitat;
 	private String genero;
 	private Zona zona;
-	private Reptil[] listado;
+	private ArrayList<Reptil> listado;
 	public int iguanas=0;
 	public int serpientes=0;
 	private String colorEscamas;
@@ -16,7 +17,8 @@ public class Reptil extends Animal {
 
 	public Reptil() {
 	}
-	public Reptil(String nombre, int edad, String habitat, Zona zona, String genero, String colorEscamas, int largoCola){
+	
+	public Reptil(String nombre, int edad, String habitat, String genero, Zona zona, String colorEscamas, int largoCola){
 		this.nombre = nombre;
 		this.edad = edad;
 		this.habitat = habitat;
@@ -24,9 +26,10 @@ public class Reptil extends Animal {
 		this.genero = genero;
 		this.colorEscamas = colorEscamas;
 		this.largoCola = largoCola;
+		totalAnimales++;
 	}
 	public int cantidadReptiles() {
-		return listado.length;
+		return listado.size();
 		
 	}
 	@Override
@@ -36,10 +39,14 @@ public class Reptil extends Animal {
 	}
 	public void crearIguana() {
 		//escamas=verde, largo=3, habitat=humedal
+		iguanas++;
+		Reptil iguana = new Reptil(nombre, edad, "humedal",  genero, zona, "verde", 3);
 		
 	}
 	public void crearSerpiente() {
 		//escamas=blanco, cola=1, habitat=jungla
+		serpientes++;
+		Reptil serpiente = new Reptil(nombre, edad, "jungla",  genero, zona, "blanco", 1);
 		
 	}
 	public String getNombre() {
@@ -82,11 +89,11 @@ public class Reptil extends Animal {
 		this.zona=zona;
 		
 	}
-	public Reptil[] getReptil() {
+	public ArrayList<Reptil> getReptil() {
 		return listado;
 		
 	}
-	public void setReptil(Reptil[] listado) {
+	public void setReptil(ArrayList<Reptil> listado) {
 		this.listado=listado;
 		
 	}

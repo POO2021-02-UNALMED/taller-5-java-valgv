@@ -1,41 +1,48 @@
 package zooAnimales;
 import gestion.Zona;
-import gestion.Zoologico;
+import java.util.ArrayList;
 
 public class Animal{
-	private int totalAnimales = 0; //conteo total de animales 
+	private int totalAnimales; //conteo total de animales 
 	private String nombre;
 	private int edad;
 	private String habitat;
 	private String genero;
 	private Zona zona;
+	
 	public Animal() {
 	}
+	
 	public Animal(String nombre, int edad, String habitat, String genero, Zona zona) {
 		this.nombre = nombre;
 		this.edad = edad;
 		this.habitat = habitat;
-		this.zona = zona;
 		this.genero = genero;
+		this.zona = zona;
+		totalAnimales++;
 	}
 	public String movimiento() {
 		/*retorna el valor del como el animal se mueve,
 		 * Animal=desplazarse
 		 * Ave=volar
-		 * REptil=reptar
+		 * Reptil=reptar
 		 * Pez=nadar
 		 * Anfibio=saltar
 		 */
 		return "desplazarse";
 	}
-	public int totalPorTipo() {
+	public String totalPorTipo() {
 		/* "Mamiferos:#
 		 * Aves:#
 		 * Reptiles:#
 		 * Peces:#
 		 * Anfibios:#
 		 */
-				
+		return("Mamiferos: " + Mamifero.cantidadMamiferos() + "\n"
+				+"Aves: " + Ave.cantidadAves() + "\n"
+				+"Reptiles: " + Reptil.cantidadReptiles() + "\n"
+				+"Peces: " + Pez.cantidadPeces() + "\n"
+				+"Anfibios: " + Anfibio.cantidadAnfibios());	
 		
 	}
 	public String toString() {
@@ -44,11 +51,12 @@ public class Animal{
 		 * Los valores de zoo y zona son los valores del nombre del respectivo objeto,
 		 * si no tiene zona solo se impirme hasta el género
 		 */
-		return "Mi nombre es "+ nombre +", tengo una edad de "+edad+", habito en "+habitat+" y mi genero es "+genero+", la zona en la que me ubico es "+zona+", en el ";
+		return "Mi nombre es "+ nombre +", tengo una edad de "+edad+", habito en "+habitat+" y mi genero es "+genero+", la zona en la que me ubico es "+zona+", en el "+zona.getZoologico();
 				//Los valores de zoo y zona son los valores del nombre del respectivo objeto,si no tiene zona solo se impirme hasta el género"
 		
 	}
 	public int getTotalAnimales() {
+		return totalAnimales;
 		
 	}
 	public String getNombre() {

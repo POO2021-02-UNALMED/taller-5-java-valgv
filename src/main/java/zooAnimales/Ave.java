@@ -1,31 +1,33 @@
 package zooAnimales;
 import gestion.Zona;
+import java.util.ArrayList;
 
 public class Ave extends Animal {
-	private int totalAnimales=0;
+	private int totalAnimales;
 	private String nombre;
 	private int edad;
 	private String habitat;
 	private String genero;
 	private Zona zona;
-	private Ave[] listado;
+	private ArrayList<Ave> listado;
 	public int halcones=0; //numero de veces que se uso crearAlcon
 	public int aguilas=0;// crearAguilas
 	private String colorPlumas;
 
 	public Ave() {
 	}
-	public Ave(String nombre, int edad, String habitat, Zona zona, String genero, String colorPlumas){
+	public Ave(String nombre, int edad, String habitat, String genero, Zona zona, String colorPlumas){
 		this.nombre = nombre;
 		this.edad = edad;
 		this.habitat = habitat;
-		this.zona = zona;
 		this.genero = genero;
+		this.zona = zona;
 		this.colorPlumas = colorPlumas;
+		totalAnimales++;
 	}
 	public int cantidadAves() {
 		//cantidad aves creadas
-		return listado.length;
+		return listado.size();
 		
 	}
 	@Override
@@ -35,10 +37,14 @@ public class Ave extends Animal {
 	}
 	public void crearHalcon() {
 		//colorPlumas= cafe glorioso, habitat= montanas
+		halcones++;
+		Ave halcon = new Ave(nombre, edad, "montanas",  genero, zona, "cafe glorioso");
 		
 	}
 	public void crearAguila() {
 		//colorPlumas=blanco y amarillo, habitat=montanas
+		aguilas++;
+		Ave aguila = new Ave(nombre, edad, "montanas", genero, zona, "blanco y amarillo");
 		
 	}
 	public String getNombre() {
@@ -81,11 +87,11 @@ public class Ave extends Animal {
 		this.zona=zona;
 		
 	}
-	public Ave[] getAve() {
+	public ArrayList<Ave> getAve() {
 		return listado;
 		
 	}
-	public void setAve(Ave[] listado) {
+	public void setAve(ArrayList<Ave> listado) {
 		this.listado=listado;
 		
 	}
