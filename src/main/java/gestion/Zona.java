@@ -4,11 +4,11 @@ import zooAnimales.Animal;
 public class Zona {
 	private String nombre;
 	private Zoologico zoo;
-	private Animal animales;
+	private Animal[] animales;
 	
 	public Zona() {
 	}
-	public Zona(String nombre, Zoologico zoo, Animal animales) {
+	public Zona(String nombre, Zoologico zoo, Animal[] animales) {
 		this.nombre = nombre;
 		this.zoo = zoo;
 		this.animales = animales;
@@ -19,6 +19,7 @@ public class Zona {
 	}
 	public int cantidadAnimales() {
 		//retornara la cantidad de animales en la zona
+		return animales.length;
 	
 	}
 	public Zoologico getZoologico() {
@@ -37,11 +38,11 @@ public class Zona {
 		this.nombre = nombre;
 		
 	}
-	public Animal getAnimal() {
-		return animales;
+	public Animal getAnimal(Animal animal) {
+		return animales.animal;
 		
 	}
-	public void setAnimal(Animal animal) {
+	public void setAnimal(Animal[] animal) {
 		this.animales = animal;
 	}
 
