@@ -3,29 +3,24 @@ import gestion.Zona;
 import java.util.ArrayList;
 
 public class Ave extends Animal {
-	private int totalAnimales;
-	private String nombre;
-	private int edad;
-	private String habitat;
-	private String genero;
-	private Zona zona;
-	private ArrayList<Ave> listado;
+	private static ArrayList<Ave> listado = new ArrayList<Ave>();
 	public int halcones=0; //numero de veces que se uso crearAlcon
 	public int aguilas=0;// crearAguilas
 	private String colorPlumas;
 
 	public Ave() {
+		listado.add(this);
 	}
-	public Ave(String nombre, int edad, String habitat, String genero, Zona zona, String colorPlumas){
+	public Ave(String nombre, int edad, String habitat, String genero, String colorPlumas){
+		listado.add(this);
 		this.nombre = nombre;
 		this.edad = edad;
 		this.habitat = habitat;
 		this.genero = genero;
-		this.zona = zona;
 		this.colorPlumas = colorPlumas;
 		totalAnimales++;
 	}
-	public int cantidadAves() {
+	public static int cantidadAves() {
 		//cantidad aves creadas
 		return listado.size();
 		
@@ -79,20 +74,12 @@ public class Ave extends Animal {
 		this.genero=genero;
 		
 	}
-	public Zona getZona() {
-		return zona;
-		
-	}
-	public void setZona(Zona zona) {
-		this.zona=zona;
-		
-	}
 	public ArrayList<Ave> getAve() {
 		return listado;
 		
 	}
-	public void setAve(ArrayList<Ave> listado) {
-		this.listado=listado;
+	public static void setAve(ArrayList<Ave> listado) {
+		Ave.listado=listado;
 		
 	}
 	public String getColorPlumas() {

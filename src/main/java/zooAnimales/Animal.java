@@ -3,22 +3,21 @@ import gestion.Zona;
 import java.util.ArrayList;
 
 public class Animal{
-	private int totalAnimales; //conteo total de animales 
-	private String nombre;
-	private int edad;
-	private String habitat;
-	private String genero;
+	protected static int totalAnimales=0; //conteo total de animales 
+	protected String nombre;
+	protected int edad;
+	protected String habitat;
+	protected String genero;
 	private Zona zona;
 	
 	public Animal() {
 	}
 	
-	public Animal(String nombre, int edad, String habitat, String genero, Zona zona) {
+	public Animal(String nombre, int edad, String habitat, String genero) {
 		this.nombre = nombre;
 		this.edad = edad;
 		this.habitat = habitat;
 		this.genero = genero;
-		this.zona = zona;
 		totalAnimales++;
 	}
 	public String movimiento() {
@@ -31,18 +30,18 @@ public class Animal{
 		 */
 		return "desplazarse";
 	}
-	public String totalPorTipo() {
+	public static String totalPorTipo() {
 		/* "Mamiferos:#
 		 * Aves:#
 		 * Reptiles:#
 		 * Peces:#
 		 * Anfibios:#
 		 */
-		return("Mamiferos: " + Mamifero.cantidadMamiferos() + "\n"
+		return "Mamiferos: " + Mamifero.cantidadMamiferos() + "\n"
 				+"Aves: " + Ave.cantidadAves() + "\n"
 				+"Reptiles: " + Reptil.cantidadReptiles() + "\n"
 				+"Peces: " + Pez.cantidadPeces() + "\n"
-				+"Anfibios: " + Anfibio.cantidadAnfibios());	
+				+"Anfibios: " + Anfibio.cantidadAnfibios();	
 		
 	}
 	public String toString() {
@@ -51,7 +50,7 @@ public class Animal{
 		 * Los valores de zoo y zona son los valores del nombre del respectivo objeto,
 		 * si no tiene zona solo se impirme hasta el género
 		 */
-		return "Mi nombre es "+ nombre +", tengo una edad de "+edad+", habito en "+habitat+" y mi genero es "+genero+", la zona en la que me ubico es "+zona+", en el "+zona.getZoologico();
+		return "Mi nombre es "+ nombre +", tengo una edad de "+edad+", habito en "+habitat+" y mi genero es "+genero+", la zona en la que me ubico es "+zona.getNombre()+", en el "+zona.getZoologico().getNombre();
 				//Los valores de zoo y zona son los valores del nombre del respectivo objeto,si no tiene zona solo se impirme hasta el género"
 		
 	}

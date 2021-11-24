@@ -3,32 +3,27 @@ import gestion.Zona;
 import java.util.ArrayList;
 
 public class Pez extends Animal {
-	private int totalAnimales;
-	private String nombre;
-	private int edad;
-	private String habitat;
-	private String genero;
-	private Zona zona;
-	private ArrayList<Pez> listado;
+	private static ArrayList<Pez> listado = new ArrayList<Pez>();
 	public int salmones=0;
 	public int bacalaos=0;
 	private String colorEscamas;
 	private int cantidadAletas;
 
 	public Pez() {
+		listado.add(this);
 	}
 	
-	public Pez(String nombre, int edad, String habitat, String genero, Zona zona, String colorEscamas, int cantidadAletas){
+	public Pez(String nombre, int edad, String habitat, String genero, String colorEscamas, int cantidadAletas){
+		listado.add(this);
 		this.nombre = nombre;
 		this.edad = edad;
 		this.habitat = habitat;
 		this.genero = genero;
-		this.zona = zona;
 		this.colorEscamas = colorEscamas;
 		this.cantidadAletas = cantidadAletas;
 		totalAnimales++;
 	}
-	public int cantidadPeces() {
+	public static int cantidadPeces() {
 		return listado.size();
 		
 	}
@@ -81,20 +76,12 @@ public class Pez extends Animal {
 		this.genero=genero;
 		
 	}
-	public Zona getZona() {
-		return zona;
-		
-	}
-	public void setZona(Zona zona) {
-		this.zona=zona;
-		
-	}
 	public ArrayList<Pez> getPez() {
 		return listado;
 		
 	}
 	public void setPez(ArrayList<Pez> listado) {
-		this.listado=listado;
+		Pez.listado=listado;
 		
 	}
 	public String getColorEscamas() {

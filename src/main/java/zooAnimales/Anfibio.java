@@ -3,33 +3,28 @@ import gestion.Zona;
 import java.util.ArrayList;
 
 public class Anfibio extends Animal {
-	private int totalAnimales;
-	private String nombre;
-	private int edad;
-	private String habitat;
-	private String genero;
-	private Zona zona;
-	private ArrayList<Anfibio> listado;
-	public int ranas=0;
-	public int salamandras=0;
+	private static ArrayList<Anfibio> listado = new ArrayList<Anfibio>();
+	public static int ranas=0;
+	public static int salamandras=0;
 	private String colorPiel;
 	private boolean venenoso;
 
 	public Anfibio() {
+		listado.add(this);
 	}
 	
-	public Anfibio(String nombre, int edad, String habitat, String genero, Zona zona, String colorPiel, boolean venenoso){
+	public Anfibio(String nombre, int edad, String habitat, String genero, String colorPiel, boolean venenoso){
+		listado.add(this);
 		this.nombre = nombre;
 		this.edad = edad;
 		this.habitat = habitat;
 		this.genero = genero;
-		this.zona = zona;
 		this.colorPiel = colorPiel;
 		this.venenoso = venenoso;
 		totalAnimales++;
 		
 	}
-	public int cantidadAnfibios() {
+	public static int cantidadAnfibios() {
 		return listado.size();
 		
 	}
@@ -41,14 +36,13 @@ public class Anfibio extends Animal {
 	public void crearRana(String nombre, int edad, String genero) {
 		//rojo, true, selva
 		ranas++;
-		Anfibio rana = new Anfibio(nombre, edad, "selva", genero, zona, "rojo", true);
+		Anfibio rana = new Anfibio(nombre, edad, "selva", genero, "rojo", true);
 		
 	}
 	public void crearSalamandra(String nombre, int edad, String genero) {
 		//negro y amarillo, false, selva
 		salamandras++;
-		Anfibio salamandra = new Anfibio(nombre, edad, "selva", genero, zona, "negro y amarillo", false);
-		
+		Anfibio salamandra = new Anfibio(nombre, edad, "selva", genero, "negro y amarillo", false);
 	}
 	public String getNombre() {
 		return nombre;
@@ -82,20 +76,12 @@ public class Anfibio extends Animal {
 		this.genero=genero;
 		
 	}
-	public Zona getZona() {
-		return zona;
-		
-	}
-	public void setZona(Zona zona) {
-		this.zona=zona;
-		
-	}
 	public ArrayList<Anfibio> getAnfibio() {
 		return listado;
 		
 	}
-	public void setAnfibio(Anfibio[] listado) {
-		this.listado=listado;
+	public static void setAnfibio(ArrayList<Anfibio> listado) {
+		Anfibio.listado=listado;
 		
 	}
 	public String getColorPiel() {
@@ -108,7 +94,6 @@ public class Anfibio extends Animal {
 	}
 	public boolean getVenenoso() {
 		return venenoso;
-		
 	}
 	public void setVenenoso(boolean venenoso) {
 		this.venenoso = venenoso;
