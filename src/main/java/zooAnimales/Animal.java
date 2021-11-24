@@ -1,6 +1,5 @@
 package zooAnimales;
 import gestion.Zona;
-import java.util.ArrayList;
 
 public class Animal{
 	protected static int totalAnimales=0; //conteo total de animales 
@@ -11,6 +10,7 @@ public class Animal{
 	private Zona zona;
 	
 	public Animal() {
+		totalAnimales++;
 	}
 	
 	public Animal(String nombre, int edad, String habitat, String genero) {
@@ -50,7 +50,12 @@ public class Animal{
 		 * Los valores de zoo y zona son los valores del nombre del respectivo objeto,
 		 * si no tiene zona solo se impirme hasta el género
 		 */
-		return "Mi nombre es "+ nombre +", tengo una edad de "+edad+", habito en "+habitat+" y mi genero es "+genero+", la zona en la que me ubico es "+zona.getNombre()+", en el "+zona.getZoologico().getNombre();
+		if(zona==null) {
+			return "Mi nombre es "+ nombre +", tengo una edad de "+edad+", habito en "+habitat+" y mi genero es "+genero;
+		}
+		else {
+			return "Mi nombre es "+ nombre +", tengo una edad de "+edad+", habito en "+habitat+" y mi genero es "+genero+", la zona en la que me ubico es "+zona.getNombre()+", en el "+zona.getZoologico().getNombre();
+		}
 				//Los valores de zoo y zona son los valores del nombre del respectivo objeto,si no tiene zona solo se impirme hasta el género"
 		
 	}

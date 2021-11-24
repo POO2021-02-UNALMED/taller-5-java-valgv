@@ -1,16 +1,16 @@
 package zooAnimales;
-import gestion.Zona;
 import java.util.ArrayList;
 
 public class Mamifero extends Animal {
 	private static ArrayList<Mamifero> listado = new ArrayList<Mamifero>(); //atributo listado donde se almacena cada objeto al ser creado
-	public int caballos=0; //conteo de veces que se uso el método crearCaballo
-	public int leones=0; //crearLeon
+	public static int caballos=0; //conteo de veces que se uso el método crearCaballo
+	public static int leones=0; //crearLeon
 	private boolean pelaje;
 	private int patas;
 
 	public Mamifero() {
 		listado.add(this);
+		totalAnimales++;
 	}
 	
 	public Mamifero(String nombre, int edad, String habitat, String genero, boolean pelaje, int patas){
@@ -28,16 +28,18 @@ public class Mamifero extends Animal {
 		return listado.size();
 		
 	}
-	public void crearCaballo() {
+	public static Mamifero crearCaballo(String nombre, int edad, String genero) {
 		//crea mamifero con pelaje=true, patas=4, habitat=selva
 		caballos++;
-		Mamifero caballo = new Mamifero(nombre, edad, "selva", genero, zona, true, 4);
+		Mamifero caballo = new Mamifero(nombre, edad, "selva", genero, true, 4);
+		return caballo;
 		
 	}
-	public void crearLeon() {
+	public static Mamifero crearLeon(String nombre, int edad, String genero) {
 		//pelaje=true, patas=4, habitat=selva
 		leones++;
-		Mamifero leon = new Mamifero(nombre, edad, "selva", genero, zona, true, 4);
+		Mamifero leon = new Mamifero(nombre, edad, "selva", genero, true, 4);
+		return leon;
 		
 	}	
 	public String getNombre() {
@@ -71,7 +73,7 @@ public class Mamifero extends Animal {
 		this.genero=genero;
 		
 	}
-	public ArrayList<Mamifero> getMamifero() {
+	public static ArrayList<Mamifero> getMamifero() {
 		return listado;
 		
 	}
